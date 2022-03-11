@@ -12,7 +12,7 @@
 <body>
     <!--header-->
     <div class="class_header">
-        <nav class="navbar navbar-expand-sm navbar-dark bg-secondary">
+        <nav class="navbar navbar-expand-sm navbar-light bg-warning">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
                     <img src="{% static 'images/logo.png' %}" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
@@ -23,7 +23,7 @@
               <div class="collapse navbar-collapse" id="mynavbar">
                 <ul class="navbar-nav me-auto">
                   <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0)">Sản phẩm</a>
+                    <a class="nav-link" href="{% url 'product' %}">Sản phẩm</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0)">Khuyến mãi</a>
@@ -35,9 +35,9 @@
                 <div class="class_login">
                     {% if user.username %}
                         <p>Xin Chào {{user.username}}</p>
-                        <p><a href="{% url 'logout' %}">Đăng Xuất</a></p>
+                        <p><a href="{% url 'logout' %}" class="btn btn-danger">Đăng xuất</a></p>
                     {% else %}
-                        <p><a href="{% url 'register' %}">Đăng Ký</a>|<a href="{% url 'login' %}">Đăng Nhập</a></p>
+                        <p><a href="{% url 'register' %}" class="btn btn-primary">Đăng ký</a> <a href="{% url 'login' %}" class="btn btn-success">Đăng nhập</a></p>
                     {% endif %}
                 </div>
               </div>
@@ -53,7 +53,7 @@
                     <a class="nav-link" href="{% url 'info' %}">Thông tin</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="{% url 'blog' %}">Chi tiết</a>
+                    <a class="nav-link" href="{% url 'blog' %}">Blog</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="{% url 'contact' %}">Liên hệ</a>

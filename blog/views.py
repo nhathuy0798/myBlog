@@ -10,7 +10,6 @@ def post(request,pk):
         form = CommentForm(request.POST, author=request.user, post=post)
         if form.is_valid():
             form.save()
-            print ("huyhihiihii")
             return HttpResponseRedirect(request.path)
     return render(request, "blog/post.html", {"post":post, "form":form})
 

@@ -4,7 +4,7 @@ from .forms import RegistrationForm
 from django.http import HttpResponseRedirect
 # Create your views here.
 def index(request):
-    return render(request, 'pages/index.html')
+    return render(request, 'pages/base.html')
 def contact(request):
     return render(request,'pages/contact.html')
 def info(request):

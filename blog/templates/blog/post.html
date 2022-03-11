@@ -3,25 +3,31 @@
 {% block title %}{{post.title}}{% endblock  %}
 
 {% block content %} 
-    <h3><a href='{% url 'post' post.id %}'>{{post.title}}</a></h3>
-    <h6> on {{post.date|date:'d:m:Y'}}</h6>
-    <img src = "{{post.image.url}}" width = "500px" height = "300px" />
-    {{post.body|safe|linebreaks}}
+    <div class="row">
+        <div class="col-sm-7" id="detail_item">
+            <h3><a href='{% url 'post' post.id %}'>{{post.title}}</a></h3>
+            <h6> on {{post.date|date:'d:m:Y'}}</h6>
+            <img src = "{{post.image.url}}" width = "480px" height = "300px" />
+            {{post.body|safe|linebreaks}}
 
-    {% for comment in post.comments.all %}
-        <h4><strong>{{comment.author}}</strong></h4>
-        <h6><p>{{comment.date}}</p></h6>
-        <p>{{comment.body|linebreaks}}</p>
-    {% endfor%}
+            {% for comment in post.comments.all %}
+                <h4><strong>{{comment.author}}</strong></h4>
+                <h6><p>{{comment.date}}</p></h6>
+                <p>{{comment.body|linebreaks}}</p>
+            {% endfor%}
+        </div>
+        <div class="col-sm-5" id="comments"> 
+        <br>
+            {% if user.username %}
+                <form action="{% url 'post' post.id %}" method='POST'> 
+                    {% csrf_token %}
+                    <p><label>Bình Luận:</label></p>
+                    {{form.body}}
+                    <br/>
+                    <input type="submit" value="Bình Luận" class="btn btn-success"/>
 
-    {% if user.username %}
-        <form action="{% url 'post' post.id %}" method='POST'> 
-            {% csrf_token %}
-            <p><label>Bình Luận:</label></p>
-            {{form.body}}
-            <br/>
-            <input type="submit" value="Bình Luận"/>
-
-        </form>
-    {% endif %}
+                </form>
+            {% endif %}
+        </div>
+    </div>
 {% endblock  %}

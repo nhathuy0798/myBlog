@@ -1,0 +1,14 @@
+{% extends "pages/base.html" %}
+
+{% block title %}PRODUCT{% endblock  %}
+
+{% block content %} 
+    {% for post in Products %}
+        <h4><a href = "/product/{{post.id}}">{{post.title}}</a></h4>
+        <img src = "{{post.image.url}}" width = "100px" height = "200px" />
+    {% endfor %}
+    <br/>
+    {% if page_obj.has_next %}
+        <a href="{{request.path}}?page={{page_obj.next_page_number}}">NEXT</a>
+    {% endif %}
+{% endblock  %}
