@@ -7,6 +7,8 @@ def index(request):
     return render(request, 'pages/index.html')
 def contact(request):
     return render(request,'pages/contact.html')
+def info(request):
+    return render(request,'pages/info.html')
 def error(request):
     return render(request,'pages/error.html')
 def errors(request, exception):
